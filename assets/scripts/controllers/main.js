@@ -6,13 +6,16 @@ angular.module('chattyApp')
       $scope.messages = response.data.messages;
     });
 
-    $scope.addMessage = function ( message ) {
+    $scope.addMessage = function ( message, username, image ) {
       if (message) {
-        messageService.addMessage(message).then(function ( response ) {
+        messageService.addMessage(message, username, image).then(function ( response ) {
+
           $scope.messages = response.data.messages;
+          console.log($scope.messages)
         });
       }
     };
+
 
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

@@ -5,10 +5,18 @@
 <h4>Latest Chats:</h4>
 <div class="jumbotron">
 
-	<form ng-submit="addMessage(newMessage)">
-		<input ng-model="newMessage" type="text" placeholder="Hello!">
-	</form>
+	<form ng-submit="addMessage(newMessage, newUsername, newImage)">
+		<input ng-model="newMessage" type="text" placeholder="Hello!"><br>
+<input type="submit" id="submit" value="Submit" />
 
-	<div ng-repeat="message in messages track by $index">{{ message }}</div>
+	</form>
+  <input ng-model="newUsername" type="text" placeholder="Enter a Username"><br>
+  <input ng-model="newImage" type="text" placeholder="Enter an image Url">
+
+	<div ng-repeat="message in messages track by $index" style="border:1px solid black">
+    <img src="{{message.image}}"> {{message.username}}<br>
+  {{ message.message}}<br>
+    Time: {{message.time | date : 'shortTime'}}
+  </div>
 
 </div>
